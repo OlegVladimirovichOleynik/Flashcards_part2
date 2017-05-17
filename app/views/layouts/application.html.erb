@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Флешкарточкер</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="application.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header class="clearfix">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><%= link_to 'Флешкарточкер', root_path %></li>
+        <div id="nav">
+          <% if current_user %>
+            <ul class="nav nav-tabs">
+              <li class="dropdown">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Карточки <span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+                   <li role="presentation"><%= link_to 'Все карточки', cards_path %><span class="label label-info"><%= current_user.cards.count %></span></li>
+                   <li role="presentation"><%= link_to 'Добавить карточку', new_card_path %></li>
+                 </ul>
+               </li>
+               <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li role="presentation"><%= link_to 'Редактировать профиль', edit_user_path(current_user.id) %></li>
+                    <li role="presentation"><%= link_to 'Выйти', logout_path %></li>
+                  </ul>
+                </li>
+            </ul>
+          <% else %>
+            <ul class="nav nav-tabs">
+              <li role="presentation"><%= link_to "Регистрация", signup_path %></li>
+              <li role="presentation"><%= link_to "Войти", login_path %></li>
+            </ul>
+          <% end %>
+        </div>
+      </ul>
+    </header>
+
+
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+
+<table class="table">
+ 	<div class="panel panel-default">
+
+  	<div class="panel-heading"><h4>Все карточки</h4>
+   		<tr>
+   	 		<td><b>Оригинальный текст</td>
+   	 		<td><b>Переведенный текст</td>
+   	 		<td><b>Дата просмотра</td>
+        <td></td>
+    	</tr>
+		</div>
+  	  <% @cards.each do |cards| %>
+  		  <tr>
+  		    <td><%= cards.original_text %></td>
+   		    <td><%= cards.translated_text %></td>
+  		    <td><%= cards.review_date.strftime("%d.%m.%Y") %></td>
+          <td><div class="btn-group" role="group">
+                <%= link_to 'Посмотреть', card_path(cards), class: 'btn btn-info' %>
+                <%= link_to 'Редактировать', edit_card_path(cards), class: 'btn btn-warning' %>
+                <%= link_to 'Удалить', card_path(cards), class: 'btn btn-danger',
+                                                        method: :delete,
+                                                          data: { confirm: 'Вы уверены, что хотите удалить?' } %>
+              </div>
+          </td>
+  		  </tr>
+ 		  <% end %>
+	</div>
+</table>

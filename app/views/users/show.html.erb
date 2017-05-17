@@ -1,0 +1,23 @@
+
+<table class="table">
+ 	<div class="panel panel-default">
+
+  	<div class="panel-heading"><h4><%= @user.email %></h4>
+   		<tr>
+   	 		<td><b>Email</td>
+   	 		<td><b>Password</td>
+        <td></td>
+    	</tr>
+		</div>
+		  <tr>
+		    <td><%= @user.email %></td>
+ 		    <td><%= @user.password %></td>
+        <td><%= link_to 'Удалить', user_path(@user), class: 'btn btn-danger',
+                                                    method: :delete,
+                                                      data: { confirm: 'Вы уверены, что хотите удалить?' } %>
+
+        </td>
+
+		  </tr>
+	</div>
+</table>

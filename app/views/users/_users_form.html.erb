@@ -1,0 +1,25 @@
+<%= simple_form_for @user, :html => {:multipart => true} do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <center>
+  <%= f.input :email, as: :string,
+                        required: false %>
+  <div class="field">
+     <%= f.label :password %><br>
+     <%= f.password_field :password %>
+  </div>
+  <div class="field">
+     <%= f.label :password_confirmation %><br>
+     <%= f.password_field :password_confirmation %>
+  </div>
+  <%= f.button :submit, 'Зарегистроваться', class: 'btn btn-default'%>
+  <% end %>
+</center>

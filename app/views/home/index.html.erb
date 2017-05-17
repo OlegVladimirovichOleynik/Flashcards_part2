@@ -1,0 +1,20 @@
+<h4>Первый в мире удобный менеджер флеш-карточек. Именно так.</h4>
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<% if @card %>
+  <center>
+    <div class="jumbotron">
+      <h4 id="tittle_text">Проверь свои знания!</h4>
+      <%= render 'test_form' %>
+    </div>
+  </center>
+<% end %>

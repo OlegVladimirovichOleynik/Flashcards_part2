@@ -1,0 +1,7 @@
+<div class="panel panel-default">
+<div class="panel-heading"><h4>Регистрация</h4></div></div>
+<center>
+  <div class="jumbotron"><%= render 'users_form'%></div>
+  <%= link_to image_tag("http://i2.wp.com/yaneka.ru/wp-content/uploads/2016/02/778fb0_ab7d93d606124c3fa0c3c5cacc37d470.png?w=2250", :border => 0, :alt => '', :width => 40, :height => 40, :title => ''), auth_at_provider_path(:provider => :vk) %>
+  <%= link_to image_tag("http://brandthunder.com/wp/wp-content/uploads/2013/02/Facebook-layouts-blog-post.jpg", :border => 0, :alt => '', :width => 40, :height => 40, :title => ''), auth_at_provider_path(:provider => :facebook) %>
+</center>

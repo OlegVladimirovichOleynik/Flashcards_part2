@@ -1,0 +1,25 @@
+<%= simple_form_for @cards, :html => {:multipart => true} do |f| %>
+  <% if @cards.errors.any? %>
+    <div id="error_explanation">
+      <h3>
+        <%= pluralize(@cards.errors.count, "error") %> prohibited
+          this article from being saved:
+      </h3>
+        <ul>
+          <% @cards.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <%= f.input :original_text, as: :string,
+                        required: false %>
+  <%= f.input :translated_text, as: :string,
+                          required: false %>
+
+  <% unless @cards.new_record? %>
+    <%= f.input :review_date  %>
+  <% end %>
+    <%= f.file_field :avatar %>
+    <%= f.button :submit, class: 'btn btn-default'%>
+  <% end %>

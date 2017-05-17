@@ -1,0 +1,27 @@
+require 'rails_helper'
+
+describe Card do
+  let(:card) { FactoryGirl.create(:card) }
+  before do
+    card.update(review_date: Date.today)
+  end
+
+  it 'check_translation' do
+    visit root_path
+    fill_in 'card_original_text', with: card.original_text
+    click_button 'Проверить'
+    card.reload
+    expect(card.review_date).to eq 3.days.from_now.to_date
+    expect(page).to have_content 'Bravo'
+  end
+
+  it 'check_translation the bad' do
+    visit root_path
+    fill_in 'card_original_text', with: 'nothing'
+    click_button 'Проверить'
+    card.reload
+    expect(card.review_date).to eq Date.today
+    expect(page).to have_content 'Very bad'
+  end
+
+  end
