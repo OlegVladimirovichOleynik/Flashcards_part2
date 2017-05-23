@@ -1,0 +1,32 @@
+<table class="table">
+ 	<div class="panel panel-default">
+
+  	<div class="panel-heading"><h4>Все колоды</h4>
+   		<tr>
+   	 		<td><b>Название колоды</td>
+   	 		<td><b>Описание</td>
+        <td></td>
+        <td></td>
+    	</tr>
+		</div>
+  	  <% @decks.each do |decks| %>
+  		  <tr>
+  		    <td><%= decks.name %></td>
+   		    <td><%= decks.description %></td>
+          <% if current_user.current_deck_id == decks.id %>
+            <td><%= link_to 'Текущая', '', class: 'btn btn-success'  %></td>
+          <% else %>
+            <td><%= link_to 'Сделать текущей', current_deck_user_path(decks), method: :put, class: 'btn btn-primary'  %></td>
+          <% end %>
+          <td><div class="btn-group" role="group">
+                <%= link_to 'Посмотреть', deck_path(decks), class: 'btn btn-info' %>
+                <%= link_to 'Редактировать', edit_deck_path(decks), class: 'btn btn-warning' %>
+                <%= link_to 'Удалить', deck_path(decks), class: 'btn btn-danger',
+                                                        method: :delete,
+                                                          data: { confirm: 'Вы уверены, что хотите удалить?' } %>
+              </div>
+          </td>
+  		  </tr>
+ 		  <% end %>
+	</div>
+</table>

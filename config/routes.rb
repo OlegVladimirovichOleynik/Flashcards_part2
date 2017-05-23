@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  get 'oauths/oauth'
-
-  get 'oauths/callback'
-
   resources :cards do
     post 'simple_test', on: :collection
   end
 
-  resources :users, shallow: true do
+  resources :users do
+    member do
+      put 'current_deck'
+    end
+  end
+
+  resources :users, :decks, shallow: true do
     resources :cards
   end
 
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   resources :sessions
 
   post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback" 
+  get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
 end
