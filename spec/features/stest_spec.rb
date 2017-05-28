@@ -1,7 +1,14 @@
 require 'rails_helper'
 
-describe Card do
-  let(:card) { FactoryGirl.create(:card) }
+describe 'Card', type: :feature do
+  let(:user) { create(:user) }
+  let!(:deck) { create :deck, user: user }
+  let!(:card) { create :card, user: user, deck_id: deck.id }
+
+  before(:each) do
+    login("oleg@gmail.com", "password")
+  end
+
   before do
     card.update(review_date: Date.today)
   end
