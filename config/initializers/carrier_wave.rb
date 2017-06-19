@@ -1,4 +1,4 @@
-if Rails.env.development? || !Rails.env.rspec?
+if Rails.env.development? || Rails.env.production?
   CarrierWave.configure do |config|
     config.fog_provider = 'fog/aws'
     config.fog_credentials = {
