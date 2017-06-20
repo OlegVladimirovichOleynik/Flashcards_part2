@@ -2274,7 +2274,6 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ddd;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -4957,7 +4956,7 @@ a.badge:focus {
 }
 .jumbotron {
   border-radius: 20px;
-  width: 40%;
+  width: 500px;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-bottom: 30px;
@@ -5689,7 +5688,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading {
   color: #333;
-  background-color: #FFDE73;
   border-color: #ddd;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {

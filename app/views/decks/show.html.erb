@@ -1,0 +1,29 @@
+<center>
+  <div class="jumbotron">
+    <table class="table">
+     	<div class="panel panel-default">
+        <div class="panel-heading"><h4><%= @decks.name %></h4></div>
+       		<tr>
+       	 		<td><b>Название колоды</td>
+       	 		<td><b>Описание</td>
+            <td></td>
+        	</tr>
+    		  <tr>
+    		    <td><%= @decks.name %></td>
+     		    <td><%= @decks.description %></td>
+            <td></td>
+    		  </tr>
+          <tr>
+            <div class="btn-group" role="group">
+                  <td><%= link_to 'Посмотреть', deck_path(@decks), class: 'btn btn-info' %></td>
+                  <td><%= link_to 'Редактировать', edit_deck_path(@decks), class: 'btn btn-warning' %></td>
+                  <td><%= link_to 'Удалить', deck_path(@decks), class: 'btn btn-danger',
+                                                           method: :delete,
+                                                             data: { confirm: 'Вы уверены, что хотите удалить?' } %></td>
+                </div>
+          </tr>
+    	</div>
+    </table>
+
+  </div>
+</center>

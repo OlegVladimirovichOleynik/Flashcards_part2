@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
   belongs_to :user
+  belongs_to :decks
   before_validation :normalize_name, on: [:create, :edit, :update]
   mount_uploader :avatar, AvatarUploader
 

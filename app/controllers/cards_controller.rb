@@ -49,7 +49,7 @@ class CardsController < ApplicationController
   private
 
   def cards_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :avatar, :user_id)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :avatar, :user_id, :deck_id)
   end
 
   def find_cards
