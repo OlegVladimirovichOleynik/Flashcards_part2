@@ -1,25 +1,18 @@
-# README
+# Flashcards
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Build Status](https://travis-ci.org/OlegVladimirovichOleynik/Flashcards_part2.svg?branch=master)](https://travis-ci.org/OlegVladimirovichOleynik/Flashcards_part2)
 
-Things you may want to cover:
+### This is a simple app for learning language
 
-* Ruby version
+## Setup
 
-* System dependencies
+* `git clone github.com/OlegVladimirovichOleynik/Flashcards_part2.git`
+* `bundle install`
+* `cp config/database.ci.yml config/database.yml`
+* `rake db:setup`
+* `rake db:seed`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# Flashcards_part2
+## Tech
+* Ruby on Rails 5
+* Ruby 2.4
+* Ansible for provisioning
