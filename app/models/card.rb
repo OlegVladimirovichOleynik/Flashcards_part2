@@ -5,10 +5,10 @@ class Card < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   before_create do
-    self.review_date = 3.days.from_now
+    self.review_date = Time.current
   end
 
-  scope :rand_cards, -> { where('review_date <= ?', Date.today).order('RANDOM()') }
+  scope :rand_cards, -> { where('review_date <= ?', Time.current).order('RANDOM()') }
 
   validates :original_text, :translated_text, presence: true,
                                             uniqueness: { scope: :user_id }
@@ -20,8 +20,26 @@ class Card < ApplicationRecord
     original_text.strip.eql?(text.strip.downcase.titleize)
   end
 
-  def update_date
-    update(review_date: 3.days.from_now)
+  def inc_repeat
+    self.repeat = repeat + 1 if repeat < 5
+    change_repeat
+  end
+
+  def dec_repeat
+    self.repeat = repeat - 1 if repeat > 0
+    change_repeat
+  end
+
+  def change_repeat
+    x = case repeat
+      when 0 then 0
+      when 1 then 12
+      when 2 then 72
+      when 3 then 168
+      when 4 then 336
+      else 720
+    end
+    update(review_date: x.hours.from_now, repeat: repeat)
   end
 
   protected
