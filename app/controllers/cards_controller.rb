@@ -39,6 +39,8 @@ class CardsController < ApplicationController
     if @cards.check_translation(cards_params[:original_text])
       flash[:notice] = 'Bravo'
       @cards.inc_repeat
+    elsif @cards.check_typos(cards_params[:original_text])
+      flash[:error] = "Typo! The correct translation: #{@cards.original_text}, your translation: #{cards_params[:original_text].mb_chars.downcase.titleize}. Please, try again!" 
     else
       flash[:error] = 'Very bad'
       @cards.dec_repeat

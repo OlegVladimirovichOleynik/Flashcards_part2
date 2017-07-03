@@ -42,6 +42,10 @@ class Card < ApplicationRecord
     update(review_date: x.hours.from_now, repeat: repeat)
   end
 
+  def check_typos(text)
+    Levenshtein.distance(original_text, text.strip.downcase.titleize) == 1
+  end
+
   protected
 
   def normalize_name

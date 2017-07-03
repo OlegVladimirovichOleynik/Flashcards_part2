@@ -30,4 +30,12 @@ describe 'Card', type: :feature do
     expect(card.review_date) == Time.current
     expect(page).to have_content 'Very bad'
   end
+
+  it 'check typos' do
+    visit root_path
+    fill_in 'card_original_text', with: 'godo'
+    click_button 'Проверить'
+    card.reload
+    expect(page).to have_content 'Typo!'
+  end
 end
