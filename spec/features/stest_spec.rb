@@ -6,7 +6,7 @@ describe 'Card', type: :feature do
   let!(:card) { create :card, user: user, deck_id: deck.id }
 
   before(:each) do
-    login("oleg@gmail.com", "password")
+    login('oleg@gmail.com', 'password')
   end
 
   before do
@@ -31,4 +31,11 @@ describe 'Card', type: :feature do
     expect(page).to have_content 'Very bad'
   end
 
+  it 'check typos' do
+    visit root_path
+    fill_in 'card_original_text', with: 'godo'
+    click_button 'Проверить'
+    card.reload
+    expect(page).to have_content 'Typo!'
   end
+end

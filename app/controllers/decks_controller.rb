@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_action :find_decks, only: [:edit, :update, :destroy, :show]
+  before_action :find_decks, only: %i[edit update destroy show]
   def index
     @decks = current_user.decks.all
   end

@@ -1,6 +1,8 @@
 # Flashcards
 
 [![Build Status](https://travis-ci.org/OlegVladimirovichOleynik/Flashcards_part2.svg?branch=master)](https://travis-ci.org/OlegVladimirovichOleynik/Flashcards_part2)
+[![Code Climate](https://codeclimate.com/github/OlegVladimirovichOleynik/Flashcards_part2/badges/gpa.svg)](https://codeclimate.com/github/OlegVladimirovichOleynik/Flashcards_part2)
+
 
 ### This is a simple app for learning language
 

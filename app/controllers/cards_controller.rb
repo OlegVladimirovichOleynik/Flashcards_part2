@@ -1,12 +1,11 @@
 class CardsController < ApplicationController
-  before_action :find_cards, only: [:edit, :update, :destroy, :show, :simple_test]
+  before_action :find_cards, only: %i[edit update destroy show simple_test]
 
   def index
     @cards = current_user.cards.all
   end
 
-  def show;  end
-
+  def show; end
 
   def new
     @cards = current_user.cards.new
@@ -40,6 +39,8 @@ class CardsController < ApplicationController
     if @cards.check_translation(cards_params[:original_text])
       flash[:notice] = 'Bravo'
       @cards.inc_repeat
+    elsif @cards.check_typos(cards_params[:original_text])
+      flash[:error] = "Typo! The correct translation: #{@cards.original_text}, your translation: #{cards_params[:original_text].mb_chars.downcase.titleize}. Please, try again!" 
     else
       flash[:error] = 'Very bad'
       @cards.dec_repeat
@@ -56,5 +57,4 @@ class CardsController < ApplicationController
   def find_cards
     @cards = current_user.cards.find(params[:id])
   end
-
 end

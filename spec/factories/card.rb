@@ -12,9 +12,8 @@ FactoryGirl.define do
   end
 
   factory :deck do
-    name "deck"
-    description "this is test deck"
+    name 'deck'
+    description 'this is test deck'
     user
   end
-
 end
