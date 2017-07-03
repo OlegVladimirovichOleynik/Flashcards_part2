@@ -1,12 +1,11 @@
 class CardsController < ApplicationController
-  before_action :find_cards, only: [:edit, :update, :destroy, :show, :simple_test]
+  before_action :find_cards, only: %i[edit update destroy show simple_test]
 
   def index
     @cards = current_user.cards.all
   end
 
-  def show;  end
-
+  def show; end
 
   def new
     @cards = current_user.cards.new
@@ -56,5 +55,4 @@ class CardsController < ApplicationController
   def find_cards
     @cards = current_user.cards.find(params[:id])
   end
-
 end

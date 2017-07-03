@@ -6,7 +6,7 @@ describe 'Card', type: :feature do
   let!(:card) { create :card, user: user, deck_id: deck.id }
 
   before(:each) do
-    login("oleg@gmail.com", "password")
+    login('oleg@gmail.com', 'password')
   end
 
   before do
@@ -30,5 +30,4 @@ describe 'Card', type: :feature do
     expect(card.review_date) == Time.current
     expect(page).to have_content 'Very bad'
   end
-
-  end
+end

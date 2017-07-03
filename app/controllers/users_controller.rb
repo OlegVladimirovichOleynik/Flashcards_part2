@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
-  before_action :find_users, only: [:edit, :update, :destroy, :show, :current_deck]
-  skip_before_action :require_login, only: [:index, :new, :create]
+  before_action :find_users, only: %i[edit update destroy show current_deck]
+  skip_before_action :require_login, only: %i[index new create]
 
   def index
     @user = User.all
   end
 
   def show; end
+
   def edit; end
 
   def new
@@ -50,5 +51,4 @@ class UsersController < ApplicationController
   def find_users
     @user = User.find(current_user.id)
   end
-
 end
