@@ -39,9 +39,10 @@ class CardsController < ApplicationController
   def simple_test
     if @cards.check_translation(cards_params[:original_text])
       flash[:notice] = 'Bravo'
-      @cards.update_date
+      @cards.inc_repeat
     else
       flash[:error] = 'Very bad'
+      @cards.dec_repeat
     end
     redirect_to root_url
   end

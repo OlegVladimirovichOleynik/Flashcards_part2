@@ -10,7 +10,7 @@ describe 'Card', type: :feature do
   end
 
   before do
-    card.update(review_date: Date.today)
+    card.update(review_date: Time.current)
   end
 
   it 'check_translation' do
@@ -18,7 +18,7 @@ describe 'Card', type: :feature do
     fill_in 'card_original_text', with: card.original_text
     click_button 'Проверить'
     card.reload
-    expect(card.review_date).to eq 3.days.from_now.to_date
+    expect(card.review_date) == 12.hours.from_now.to_date
     expect(page).to have_content 'Bravo'
   end
 
@@ -27,7 +27,7 @@ describe 'Card', type: :feature do
     fill_in 'card_original_text', with: 'nothing'
     click_button 'Проверить'
     card.reload
-    expect(card.review_date).to eq Date.today
+    expect(card.review_date) == Time.current
     expect(page).to have_content 'Very bad'
   end
 
