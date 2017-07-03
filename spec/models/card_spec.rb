@@ -16,19 +16,16 @@ describe Card do
   it 'change_repeat' do
     card.inc_repeat
     expect(card.repeat).to eq 1
-    card.inc_repeat
-    card.inc_repeat
-    card.inc_repeat
-    card.inc_repeat
-    card.inc_repeat
-    expect(card.repeat).to eq 5
-    card.dec_repeat
-    expect(card.repeat).to eq 4
-    card.dec_repeat
-    card.dec_repeat
-    card.dec_repeat
-    card.dec_repeat
     card.dec_repeat
     expect(card.repeat).to eq 0
+  end
+
+  it 'check if' do
+    card.update(repeat: 5)
+    card.inc_repeat
+    expect(card.repeat).to eq 5
+    card.update(repeat: 0)
+    card.dec_repeat
+    expect(card.repeat). to eq 0
   end
 end
